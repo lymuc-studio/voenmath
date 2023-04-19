@@ -3,24 +3,32 @@
 
 #include <ostream>
 
-#include "voenmath/sqmat.hpp"
+#include "voenmath/mat.hpp"
 
 namespace voenmath
 {
 	template<typename T>
-	std::ostream& operator<<(std::ostream& out, sqmat<T>& m)
+	std::ostream& operator<<(std::ostream& out, const mat<T>& m)
 	{
-		auto elements = m.element_count();
-		auto size = m.size();
+		auto rows = m.get_rows();
+		auto cols = m.get_cols();
 	
-		for (std::size_t i = 0; i < elements; i++)
+		using size_type = decltype(rows);
+	
+		for (size_type r = 0; r < rows - 1; r++)
 		{
-			out << m[i / size][i % size] << ' ';
-			if ((i + 1) % size == 0)
+			for (size_type c = 0; c < cols - 1; c++)
 			{
-				out << '\n';
+				std::cout << m.at(r, c) << ' ';
 			}
+			std::cout << m.at(r, cols - 1) << '\n';
 		}
+	
+		for (size_type c = 0; c < cols - 1; c++)
+		{
+			std::cout << m.at(rows - 1, c) << ' ';
+		}
+		std::cout << m.at(rows - 1, cols - 1);
 
 		return out;
 	}

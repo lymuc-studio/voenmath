@@ -1,29 +1,33 @@
 #include <iostream>
 
-#include <voenmath/sqmat.hpp>
 #include <voenmath/io.hpp>
+#include <voenmath/mat.hpp>
+#include <voenmath/product.hpp>
 
 int main()
 {
-	voenmath::sqmat<int> E
+	voenmath::imat m1
 	{
-		1, 0, 0,
-		0, 1, 0,
-		0, 0, 1
+		2, 3,
+		{
+			3, -2, 5,
+			3, 0, 4
+		}
 	};
 
-	std::cout << "Main diagonal:\n";
-
-	E.diagonal([](int& value)
+	voenmath::imat m2
+	{
+		3, 2,
 		{
-			std::cout << value++ << std::endl;
+			2, 3,
+			-9, 0,
+			0, 4
 		}
-	);
+	};
 
-	std::cout << "\nE =\n" << E << std::endl;
+	auto r = m1 * m2;
 
-	std::cout << "E[2][1] = " << E[2][1] << std::endl;
-	std::cout << "E[0][0] = " << E[0][0] << std::endl;
+	std::cout << r << std::endl;
 
 	return 0;
 }
