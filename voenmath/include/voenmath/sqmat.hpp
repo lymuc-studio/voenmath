@@ -1,5 +1,5 @@
-#ifndef VOENMATH_VEC_2_MAT_HPP
-#define VOENMATH_VEC_2_MAT_HPP
+#ifndef VOENMATH_SQMAT_HPP
+#define VOENMATH_SQMAT_HPP
 
 #include <cmath>
 
@@ -130,4 +130,4 @@ namespace voenmath
 	};
 }
 
-#endif // VOENMATH_VEC_2_MAT_HPP
+#endif // VOENMATH_SQMAT_HPP
