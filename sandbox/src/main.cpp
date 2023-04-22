@@ -2,7 +2,7 @@
 
 #include <voenmath/io.hpp>
 #include <voenmath/mat.hpp>
-#include <voenmath/product.hpp>
+#include <voenmath/operation.hpp>
 
 int main()
 {
@@ -25,9 +25,20 @@ int main()
 		}
 	};
 
-	auto r = m1 * m2;
+	voenmath::imat m3
+	{
+		2, 3,
+		{
+			-3, -1, 4,
+			14, 0, -4
+		}
+	};
 
-	std::cout << r << std::endl;
+	auto r = m2 * m3;
+
+	r *= 2;
+
+	std::cout << -r << std::endl;
 
 	return 0;
 }
